@@ -1,14 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navItems = (
-    <div className="flex flex-col md:flex-row gap-5 font-medium">
+    <div className="flex flex-col md:flex-row font-medium uppercase">
       <btn>
         <NavLink
           className={({ isActive }) =>
-            isActive
-              ? "px-3 py-2 bg-yellow-400 rounded-lg"
-              : "px-3 py-2 bg-slate-300 rounded-lg"
+            isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
           }
           to="/"
         >
@@ -18,9 +16,7 @@ const Navbar = () => {
       <btn>
         <NavLink
           className={({ isActive }) =>
-            isActive
-              ? "px-3 py-2 bg-yellow-400 rounded-lg"
-              : "px-3 py-2 bg-slate-300 rounded-lg"
+            isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
           }
           to="/my-food"
         >
@@ -30,9 +26,7 @@ const Navbar = () => {
       <btn>
         <NavLink
           className={({ isActive }) =>
-            isActive
-              ? "px-3 py-2 bg-yellow-400 rounded-lg"
-              : "px-3 py-2 bg-slate-300 rounded-lg"
+            isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
           }
           to="/blogs"
         >
@@ -43,7 +37,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar fixed z-10 lg:max-w-screen-xl  bg-black bg-opacity-30 text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -66,11 +60,19 @@ const Navbar = () => {
               tabIndex={0}
               className="menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <a className="btn btn-ghost normal-case text-xl mb-10">daisyUI</a>
+              <Link
+                to="/"
+                className="cursor-pointer uppercase text-xl mb-20 font-medium"
+              >
+                Bistro Boss Resturant
+              </Link>
+
               {navItems}
             </div>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <Link to="/" className="cursor-pointer uppercase text-xl font-medium">
+            Bistro Boss Resturant
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu-horizontal px-1">{navItems}</ul>
