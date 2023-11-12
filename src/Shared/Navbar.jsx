@@ -32,6 +32,14 @@ const Navbar = () => {
         >
           Blogs
         </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
+          }
+          to="/menu"
+        >
+          Our Menu
+        </NavLink>
       </btn>
     </div>
   );
@@ -58,7 +66,7 @@ const Navbar = () => {
             </label>
             <div
               tabIndex={0}
-              className="menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 bg-black "
             >
               <Link
                 to="/"
