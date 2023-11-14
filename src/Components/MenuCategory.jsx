@@ -1,24 +1,24 @@
 /* eslint-disable react/prop-types */
-const MenuCategory = ({ menu }) => {
-  const { image, name, recipe, price } = menu;
-  console.log(menu);
+import Cover from "../Shared/Cover";
+import Button from "./Button";
+import MenuCard from "./MenuCard";
+import { Link } from "react-router-dom";
+
+const MenuCategory = ({ menu, title, img }) => {
+  console.log(title);
   return (
-    <div>
-      <div className="flex items-center gap-10">
-        <img
-          style={{ borderRadius: "0 200px 200px 200px", width: "120px" }}
-          src={image}
-          alt=""
-        />
-        <div className="flex">
-          <div className="space-y-2">
-            <h2 className="font-medium">{name} ---------</h2>
-            <p>{recipe}</p>
-          </div>
-          <p className="text-[#BB8506]">${price}</p>
-        </div>
+    <>
+      {title && <Cover img={img} title={title}></Cover>}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-10">
+        {menu.slice(0, 6)?.map((item) => (
+          <MenuCard key={item._id} item={item}></MenuCard>
+        ))}
       </div>
-    </div>
+      <Link to={`/our-shop/${title}`}>
+        <Button title={"Check Full Menu"}></Button>
+      </Link>
+    </>
   );
 };
 

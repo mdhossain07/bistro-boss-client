@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 
 const useMenus = () => {
   const [menus, setMenus] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios("menu.json").then((res) => setMenus(res.data));
+    axios("http://localhost:5001/api/v1/get-menu").then((res) => {
+      setMenus(res.data);
+      // setLoading(false);
+    });
   }, []);
   return menus;
 };

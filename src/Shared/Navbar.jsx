@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
   const navItems = (
     <div className="flex flex-col md:flex-row font-medium uppercase">
-      <btn>
+      <button>
         <NavLink
           className={({ isActive }) =>
             isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
@@ -12,8 +12,9 @@ const Navbar = () => {
         >
           Home
         </NavLink>
-      </btn>
-      <btn>
+      </button>
+
+      <button>
         <NavLink
           className={({ isActive }) =>
             isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
@@ -22,16 +23,9 @@ const Navbar = () => {
         >
           My Food
         </NavLink>
-      </btn>
-      <btn>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
-          }
-          to="/blogs"
-        >
-          Blogs
-        </NavLink>
+      </button>
+
+      <button>
         <NavLink
           className={({ isActive }) =>
             isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
@@ -40,7 +34,18 @@ const Navbar = () => {
         >
           Our Menu
         </NavLink>
-      </btn>
+      </button>
+
+      <button>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
+          }
+          to="/our-shop/salads"
+        >
+          Our Shop
+        </NavLink>
+      </button>
     </div>
   );
   return (

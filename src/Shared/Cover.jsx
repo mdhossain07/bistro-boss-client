@@ -18,7 +18,7 @@ const Cover = ({ img, title }) => {
             }}
           >
             <div className="flex flex-col p-3 items-center justify-center">
-              <h1 className="mb-5 text-5xl font-bold">{title}</h1>
+              <h1 className="mb-5 text-5xl font-bold uppercase">{title}</h1>
               <p className="mb-5 max-lg">
                 Provident cupiditate voluptatem et in. Quaerat fugiat ut
                 assumenda excepturi exercitationem quasi. In deleniti eaque aut

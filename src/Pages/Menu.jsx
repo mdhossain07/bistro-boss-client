@@ -6,6 +6,7 @@ import useMenus from "../hooks/useMenus";
 import dessertImg from "../assets/menu/dessert-bg.jpeg";
 import saladImg from "../assets/menu/salad-bg.jpg";
 import soupImg from "../assets/menu/soup-bg.jpg";
+import pizzaImg from "../assets/menu/pizza-bg.jpg";
 
 const Menu = () => {
   const menus = useMenus();
@@ -15,51 +16,42 @@ const Menu = () => {
   const pizzas = menus.filter((item) => item.category === "pizza");
   const soups = menus.filter((item) => item.category === "soup");
 
-  console.log(offered);
-
   return (
     <div>
       {/* Offered */}
       <Cover img={menuImg} title={"OUR MENU"} />
+
       <SectionTitle
         heading={"Don't Miss"}
         subHeading={"Today's Offer"}
       ></SectionTitle>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-10">
-        {offered.map((menu) => (
-          <MenuCategory key={menu._id} menu={menu}></MenuCategory>
-        ))}
-      </div>
+      <MenuCategory menu={offered}></MenuCategory>
+
       {/* Desserts */}
-      <Cover img={dessertImg} title={"DESSERTS"}></Cover>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-10">
-        {desserts.slice(0, 6).map((menu) => (
-          <MenuCategory key={menu._id} menu={menu}></MenuCategory>
-        ))}
-      </div>
-      <div className="flex justify-center my-5">
-        <button className="btn btn-neutral">Check Full Menu</button>
-      </div>
+
+      <MenuCategory
+        menu={desserts}
+        img={dessertImg}
+        title={"desserts"}
+      ></MenuCategory>
+
       {/* Soups */}
-      <Cover img={soupImg} title={"SOUPS"}></Cover>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-10">
-        {soups.slice(0, 6).map((menu) => (
-          <MenuCategory key={menu._id} menu={menu}></MenuCategory>
-        ))}
-      </div>
-      <div className="flex justify-center my-5">
-        <button className="btn btn-neutral">Check Full Menu</button>
-      </div>
+      <MenuCategory menu={soups} img={soupImg} title={"soups"}></MenuCategory>
+
       {/* Salads */}
-      <Cover img={saladImg} title={"SALADS"}></Cover>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-10">
-        {salads.slice(0, 6).map((menu) => (
-          <MenuCategory key={menu._id} menu={menu}></MenuCategory>
-        ))}
-      </div>
-      <div className="flex justify-center my-5">
-        <button className="btn btn-neutral">Check Full Menu</button>
-      </div>
+      <MenuCategory
+        menu={salads}
+        img={saladImg}
+        title={"salads"}
+      ></MenuCategory>
+
+      {/* Pizzas */}
+
+      <MenuCategory
+        menu={pizzas}
+        img={pizzaImg}
+        title={"pizzas"}
+      ></MenuCategory>
     </div>
   );
 };
