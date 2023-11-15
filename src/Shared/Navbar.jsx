@@ -1,6 +1,23 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
+import useCart from "../hooks/useCart";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+  const [cart] = useCart();
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        alert("Logged Out!");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   const navItems = (
     <div className="flex flex-col md:flex-row font-medium uppercase">
       <button>
@@ -11,17 +28,6 @@ const Navbar = () => {
           to="/"
         >
           Home
-        </NavLink>
-      </button>
-
-      <button>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
-          }
-          to="/my-food"
-        >
-          My Food
         </NavLink>
       </button>
 
@@ -46,6 +52,18 @@ const Navbar = () => {
           Our Shop
         </NavLink>
       </button>
+      {user?.email && (
+        <button>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "px-3 py-2 text-yellow-400" : "px-3 py-2 text-white"
+            }
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>
+        </button>
+      )}
     </div>
   );
   return (
@@ -90,8 +108,27 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu-horizontal px-1">{navItems}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+
+        <div className="navbar-end flex justify-around">
+          <button className="flex gap-2">
+            <FaShoppingCart />
+            <div className="badge">+{cart.length}</div>
+          </button>
+
+          <div>{user && <h2>{user.displayName}</h2>}</div>
+          <div>
+            {user ? (
+              <Link to="/login" className="btn">
+                <button onClick={handleLogOut} className="text-md">
+                  Logout
+                </button>
+              </Link>
+            ) : (
+              <Link to="/login" className="text-md">
+                <button>Login</button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>

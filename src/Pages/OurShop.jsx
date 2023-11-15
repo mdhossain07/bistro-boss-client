@@ -12,15 +12,14 @@ const OurShop = () => {
   const { category } = useParams();
   const initialIndex = categories.indexOf(category);
   const [tabIndex, setTabIndex] = useState(initialIndex);
-  console.log(initialIndex);
-  console.log(category);
 
   const menus = useMenus();
-  const desserts = menus.filter((item) => item.category === "dessert");
-  const salads = menus.filter((item) => item.category === "salad");
-  const pizzas = menus.filter((item) => item.category === "pizza");
-  const soups = menus.filter((item) => item.category === "soup");
-  const drinks = menus.filter((item) => item.category === "drinks");
+  const allMenus = menus[0];
+  const desserts = allMenus.filter((item) => item.category === "dessert");
+  const salads = allMenus.filter((item) => item.category === "salad");
+  const pizzas = allMenus.filter((item) => item.category === "pizza");
+  const soups = allMenus.filter((item) => item.category === "soup");
+  const drinks = allMenus.filter((item) => item.category === "drinks");
 
   return (
     <div>

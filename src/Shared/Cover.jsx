@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 const Cover = ({ img, title }) => {
   return (
-    <div>
+    <div className="mb-16">
       <div
-        className="hero h-[800px]"
+        className="hero h-[800px] bg-fixed"
         style={{
           backgroundImage: `url(${img})`,
         }}

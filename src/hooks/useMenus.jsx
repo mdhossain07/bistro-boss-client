@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 
 const useMenus = () => {
   const [menus, setMenus] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios("http://localhost:5001/api/v1/get-menu").then((res) => {
       setMenus(res.data);
-      // setLoading(false);
+      setLoading(false);
     });
   }, []);
-  return menus;
+  return [menus, loading];
 };
 
 export default useMenus;

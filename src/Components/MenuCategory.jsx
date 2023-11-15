@@ -5,7 +5,7 @@ import MenuCard from "./MenuCard";
 import { Link } from "react-router-dom";
 
 const MenuCategory = ({ menu, title, img }) => {
-  console.log(title);
+  console.log(menu);
   return (
     <>
       {title && <Cover img={img} title={title}></Cover>}
@@ -15,6 +15,7 @@ const MenuCategory = ({ menu, title, img }) => {
           <MenuCard key={item._id} item={item}></MenuCard>
         ))}
       </div>
+
       <Link to={`/our-shop/${title}`}>
         <Button title={"Check Full Menu"}></Button>
       </Link>

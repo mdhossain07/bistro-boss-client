@@ -16,7 +16,9 @@ const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    axios("reviews.json").then((res) => setReviews(res.data));
+    axios("http://localhost:5001/api/v1/get-review").then((res) =>
+      setReviews(res.data)
+    );
   }, []);
 
   //   const ratingChanged = (newRating) => {

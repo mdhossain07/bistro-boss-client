@@ -10,11 +10,14 @@ import pizzaImg from "../assets/menu/pizza-bg.jpg";
 
 const Menu = () => {
   const menus = useMenus();
-  const offered = menus.filter((item) => item.category === "offered");
-  const desserts = menus.filter((item) => item.category === "dessert");
-  const salads = menus.filter((item) => item.category === "salad");
-  const pizzas = menus.filter((item) => item.category === "pizza");
-  const soups = menus.filter((item) => item.category === "soup");
+  const allMenus = menus[0];
+  // console.log(menus);
+
+  const offered = allMenus.filter((item) => item.category === "offered");
+  const desserts = allMenus.filter((item) => item.category === "dessert");
+  const salads = allMenus.filter((item) => item.category === "salad");
+  const pizzas = allMenus.filter((item) => item.category === "pizza");
+  const soups = allMenus.filter((item) => item.category === "soup");
 
   return (
     <div>
