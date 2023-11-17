@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
   return (
     <div>
       <div className="drawer  lg:drawer-open">
@@ -25,24 +28,57 @@ const Dashboard = () => {
           ></label>
           <ul className="menu p-4 w-80 min-h-full bg-green-400 text-lg font-medium">
             {/* Sidebar content here */}
-            <div className="flex items-center gap-3 p-3">
-              <FaShoppingCart />
-              <Link to="/dashboard/cart">My Cart</Link>
-            </div>
+
+            {isAdmin ? (
+              <>
+                {/* Admin NavItems */}
+                <li>
+                  <Link>Admin Home</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/add-items">Add Items</Link>
+                </li>
+                <li>
+                  <Link>Manage Items</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/all-users">All Users</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                {/* Users NavItems */}
+                <li>
+                  <Link>User Home</Link>
+                </li>
+                <li>
+                  <Link>Payment History</Link>
+                </li>
+                <li>
+                  <Link>Add Review</Link>
+                </li>
+                <div className="flex items-center gap-3 p-3">
+                  <FaShoppingCart />
+                  <Link to="/dashboard/cart">My Cart</Link>
+                </div>
+              </>
+            )}
+
+            <div className="divider"></div>
+
+            {/* Shared Navitems */}
             <li>
-              <a>Payment History</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a>Add Review</a>
+              <Link to="/menu">Menu</Link>
             </li>
             <li>
-              <a>My Bookings</a>
+              <Link to="/our-shop/:category">Shop</Link>
             </li>
-            <div className="mt-10 p-3">
-              <Link to="/" className="btn btn-neutral">
-                Go to Home
-              </Link>
-            </div>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../Components/SocialLogin";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const { login } = useAuth();
   const navigate = useNavigate("/");
 
@@ -14,12 +15,14 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         alert("user logged In !");
+        reset();
         navigate("/");
       })
       .catch((err) => {
         console.error(err);
       });
   };
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -50,6 +53,19 @@ const Login = () => {
                   placeholder="password"
                   className="input input-bordered"
                 />
+              </div>
+
+              <SocialLogin />
+              <div>
+                <p className="text-sm">
+                  New to this website? Please
+                  <Link
+                    className="text-red-500 font-semibold ml-1"
+                    to="/register"
+                  >
+                    Register
+                  </Link>
+                </p>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>

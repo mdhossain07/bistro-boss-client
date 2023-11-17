@@ -11,6 +11,9 @@ import axios from "axios";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Cart from "../Pages/Dashboard/Cart";
 import DashboardLayout from "../Layout/DashboardLayout";
+import AllUsers from "../Pages/AllUsers";
+import AdminRoute from "./AdminRoute";
+import AddItems from "../Pages/Dashboard/AddItems";
 
 const routes = createBrowserRouter([
   {
@@ -61,6 +64,22 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/cart",
         element: <Cart />,
+      },
+      {
+        path: "/dashboard/all-users",
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/add-items",
+        element: (
+          <AdminRoute>
+            <AddItems />
+          </AdminRoute>
+        ),
       },
     ],
   },

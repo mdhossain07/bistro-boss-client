@@ -1,10 +1,15 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import SocialLogin from "../Components/SocialLogin";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
   const { register, handleSubmit, reset } = useForm();
   const { createUser } = useAuth();
+  const axiosPublic = useAxiosPublic();
+
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -12,10 +17,17 @@ const Register = () => {
 
     createUser(data.email, data.password)
       .then((res) => {
+        axiosPublic.post("/api/v1/create/user", data).then((res) => {
+          Swal.fire({
+            title: "Good job!",
+            text: "User created successfully!",
+            icon: "success",
+          });
+          console.log(res.data);
+          reset();
+          navigate("/");
+        });
         console.log(res.user);
-        alert("user created successfully!!!");
-        reset;
-        navigate("/");
       })
       .catch((err) => {
         console.error(err);
@@ -67,6 +79,17 @@ const Register = () => {
                   className="input input-bordered"
                   name="password"
                 />
+              </div>
+
+              <SocialLogin />
+
+              <div>
+                <p className="text-sm">
+                  Already have an account? Please
+                  <Link className="text-red-500 font-semibold ml-1" to="/login">
+                    Login
+                  </Link>
+                </p>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
