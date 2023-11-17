@@ -14,6 +14,7 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import AllUsers from "../Pages/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddItems from "../Pages/Dashboard/AddItems";
+import ManageItems from "../Pages/Dashboard/ManageItems";
 
 const routes = createBrowserRouter([
   {
@@ -78,6 +79,14 @@ const routes = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manage-items",
+        element: (
+          <AdminRoute>
+            <ManageItems />
           </AdminRoute>
         ),
       },
