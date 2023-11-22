@@ -6,6 +6,8 @@ import useAuth from "../hooks/useAuth";
 const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const [isAdmin, isAdminLoading] = useAdmin();
+  console.log(isAdmin);
+  console.log(user);
 
   if (loading || isAdminLoading) {
     return <span className="loading loading-spinner text-info"></span>;

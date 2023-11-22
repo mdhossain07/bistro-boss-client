@@ -5,6 +5,7 @@ import useCart from "../../hooks/useCart";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
+  console.log(isAdmin);
   const [cart] = useCart();
   return (
     <div>
