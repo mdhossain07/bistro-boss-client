@@ -68,7 +68,7 @@ const CheckoutForm = () => {
       console.log("confirmation error", confirmError);
     } else {
       if (paymentIntent.status === "succeeded") {
-        alert("Payment Successfull");
+        alert("Payment Successfull", transactionId);
         setTransactionId(paymentIntent.id);
         console.log("transaction Id", paymentIntent.id);
 
@@ -76,6 +76,7 @@ const CheckoutForm = () => {
           transactionId: paymentIntent.id,
           email: user.email,
           date: new Date(),
+          price: totalCost,
           cartIds: cart.map((item) => item._id),
           menuIds: cart.map((item) => item.foodId),
           status: "pending",

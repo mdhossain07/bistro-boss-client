@@ -6,7 +6,6 @@ import useCart from "../../hooks/useCart";
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [cart] = useCart();
-  console.log(isAdmin);
   return (
     <div>
       <div className="drawer  lg:drawer-open">
@@ -35,7 +34,7 @@ const Dashboard = () => {
               <>
                 {/* Admin NavItems */}
                 <li>
-                  <Link>Admin Home</Link>
+                  <Link to="/dashboard/admin-home">Admin Home</Link>
                 </li>
                 <li>
                   <Link to="/dashboard/add-items">Add Items</Link>
