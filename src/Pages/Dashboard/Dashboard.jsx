@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import useAdmin from "../../hooks/useAdmin";
+import useCart from "../../hooks/useCart";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
+  const [cart] = useCart();
   console.log(isAdmin);
   return (
     <div>
@@ -52,14 +54,14 @@ const Dashboard = () => {
                   <Link>User Home</Link>
                 </li>
                 <li>
-                  <Link>Payment History</Link>
+                  <Link to="/dashboard/payment-history">Payment History</Link>
                 </li>
                 <li>
                   <Link>Add Review</Link>
                 </li>
                 <div className="flex items-center gap-3 p-3">
                   <FaShoppingCart />
-                  <Link to="/dashboard/cart">My Cart</Link>
+                  <Link to="/dashboard/cart">My Cart({cart.length}) </Link>
                 </div>
               </>
             )}

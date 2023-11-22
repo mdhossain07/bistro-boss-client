@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import SectionTitle from "../../Shared/SectionTitle";
 import { axiosSecure } from "../../hooks/useAxios";
 import useCart from "../../hooks/useCart";
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -28,9 +30,23 @@ const Cart = () => {
   //   }
   return (
     <div className="">
+      <SectionTitle
+        heading={"My Cart"}
+        subHeading={"Love the food"}
+      ></SectionTitle>
       <div className="flex justify-around">
         <h2 className="text-2xl font-semibold">Total Items : {cart.length} </h2>
-        <h2 className="text-2xl font-semibold">Total Price : {totalPrice} </h2>
+        <h2 className="text-2xl font-semibold">Total Price : ${totalPrice} </h2>
+
+        {cart.length ? (
+          <Link to="/dashboard/payment">
+            <button className="btn btn-info">Pay Now</button>
+          </Link>
+        ) : (
+          <button disabled className="btn btn-info">
+            Pay Now
+          </button>
+        )}
       </div>
 
       {/* Food Items showing in Table */}
@@ -71,11 +87,11 @@ const Cart = () => {
                     </div>
                   </td>
                   <td className="font-semibold">{item.name}</td>
-                  <td className="font-semibold">{item.price}</td>
+                  <td className="font-semibold">${item.price}</td>
                   <th>
                     <button
                       onClick={() => handleRemove(item._id)}
-                      className="btn btn-ghost btn-lg text-red-500"
+                      className="btn btn-ghost text-white bg-red-500"
                     >
                       <FaRegTrashAlt />
                     </button>
